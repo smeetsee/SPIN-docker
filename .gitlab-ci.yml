@@ -37,6 +37,16 @@ test234:
     - ./pan
     - spin -t -p loops.pml
 
+test5:
+  image: registry.gitlab.com/smeetsee/it/spin-docker
+  stage: test
+  script:
+    - rm -rf .git
+    - git clone https://github.com/nimble-code/Spin.git
+    - cd Spin/Examples
+    - cc -DNP -DNOREDUCE -o pan pan.c
+    - ./pan -l
+
 test6:
   image: registry.gitlab.com/smeetsee/it/spin-docker
   stage: test
