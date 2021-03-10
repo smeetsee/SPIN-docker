@@ -1,3 +1,7 @@
+stages:
+  - build
+  - test
+
 docker-build-master:
   image: docker:latest
   stage: build
@@ -10,3 +14,70 @@ docker-build-master:
     - docker push "$CI_REGISTRY_IMAGE"
   only:
     - master
+
+test1:
+  image: registry.gitlab.com/smeetsee/it/spin-docker
+  stage: test
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - rm -rf .git
+    - git clone https://github.com/nimble-code/Spin.git
+    - cd Spin/Examples
+    - spin hello.pml
+    - spin -T hello.pml
+
+test2:
+  image: registry.gitlab.com/smeetsee/it/spin-docker
+  stage: test
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - rm -rf .git
+    - git clone https://github.com/nimble-code/Spin.git
+    - cd Spin/Examples
+    - spin -a loops.pml 
+
+test4:
+  image: registry.gitlab.com/smeetsee/it/spin-docker
+  stage: test
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - rm -rf .git
+    - git clone https://github.com/nimble-code/Spin.git
+    - cd Spin/Examples
+    - spin -t -p loops.pml
+
+test6:
+  image: registry.gitlab.com/smeetsee/it/spin-docker
+  stage: test
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - rm -rf .git
+    - git clone https://github.com/nimble-code/Spin.git
+    - cd Spin/Examples
+    - spin -a leader0.pml
+
+test7:
+  image: registry.gitlab.com/smeetsee/it/spin-docker
+  stage: test
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - rm -rf .git
+    - git clone https://github.com/nimble-code/Spin.git
+    - cd Spin/Examples
+    - spin -o6 -p -g -u10000 priorities.pml
+
+test8:
+  image: registry.gitlab.com/smeetsee/it/spin-docker
+  stage: test
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - rm -rf .git
+    - git clone https://github.com/nimble-code/Spin.git
+    - cd Spin/Examples
+    - spin -f "[] ( p U ( <> q ))"
