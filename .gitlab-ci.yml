@@ -25,22 +25,16 @@ test1:
     - spin hello.pml
     - spin -T hello.pml
 
-test2:
+test234:
   image: registry.gitlab.com/smeetsee/it/spin-docker
   stage: test
   script:
     - rm -rf .git
     - git clone https://github.com/nimble-code/Spin.git
     - cd Spin/Examples
-    - spin -a loops.pml 
-
-test4:
-  image: registry.gitlab.com/smeetsee/it/spin-docker
-  stage: test
-  script:
-    - rm -rf .git
-    - git clone https://github.com/nimble-code/Spin.git
-    - cd Spin/Examples
+    - spin -a loops.pml
+    - cc -DNOREDUCE -o pan pan.c
+    - ./pan
     - spin -t -p loops.pml
 
 test6:
