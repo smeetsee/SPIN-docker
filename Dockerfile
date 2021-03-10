@@ -25,6 +25,7 @@ RUN apt-get -y update \
  &&     rm -rf Spin/bin
  RUN cd Spin/Src \
  &&     make \
+ &&     mkdir -p /usr/local/share/man/man1 \
  &&     make install
 
 VOLUME ["/data"]
