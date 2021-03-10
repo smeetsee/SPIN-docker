@@ -22,7 +22,8 @@ RUN apt-get -y update \
 
  RUN git clone https://github.com/nimble-code/Spin.git
  RUN cd Spin/Src\
-        make
+        make \
+        make install
 
 VOLUME ["/data"]
 WORKDIR /data
