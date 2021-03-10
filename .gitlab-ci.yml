@@ -18,8 +18,6 @@ docker-build-master:
 test1:
   image: registry.gitlab.com/smeetsee/it/spin-docker
   stage: test
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - rm -rf .git
     - git clone https://github.com/nimble-code/Spin.git
@@ -30,8 +28,6 @@ test1:
 test2:
   image: registry.gitlab.com/smeetsee/it/spin-docker
   stage: test
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - rm -rf .git
     - git clone https://github.com/nimble-code/Spin.git
@@ -41,8 +37,6 @@ test2:
 test4:
   image: registry.gitlab.com/smeetsee/it/spin-docker
   stage: test
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - rm -rf .git
     - git clone https://github.com/nimble-code/Spin.git
@@ -52,8 +46,6 @@ test4:
 test6:
   image: registry.gitlab.com/smeetsee/it/spin-docker
   stage: test
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - rm -rf .git
     - git clone https://github.com/nimble-code/Spin.git
@@ -63,8 +55,6 @@ test6:
 test7:
   image: registry.gitlab.com/smeetsee/it/spin-docker
   stage: test
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - rm -rf .git
     - git clone https://github.com/nimble-code/Spin.git
@@ -74,8 +64,6 @@ test7:
 test8:
   image: registry.gitlab.com/smeetsee/it/spin-docker
   stage: test
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - rm -rf .git
     - git clone https://github.com/nimble-code/Spin.git
