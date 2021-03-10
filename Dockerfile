@@ -16,6 +16,7 @@ RUN apt-get -y update \
         git \
         wget \
         make \
+        gcc \
         bison \
  && apt-get -y clean \
  && rm -rf /var/lib/apt/lists/*
