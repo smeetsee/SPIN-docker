@@ -20,7 +20,8 @@ RUN apt-get -y update \
  && apt-get -y clean \
  && rm -rf /var/lib/apt/lists/*
 
- RUN git clone https://github.com/nimble-code/Spin.git
+ RUN git clone https://github.com/nimble-code/Spin.git \
+        rm -rf Spin/bin
  RUN cd Spin/Src\
         make \
         make install
