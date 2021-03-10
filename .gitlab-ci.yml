@@ -35,6 +35,7 @@ test234:
     - spin -a loops.pml
     - cc -DNOREDUCE -o pan pan.c
     - ./pan
+    - ./pan -a
     - spin -t -p loops.pml
 
 test5:
@@ -44,6 +45,7 @@ test5:
     - rm -rf .git
     - git clone https://github.com/nimble-code/Spin.git
     - cd Spin/Examples
+    - spin -a loops.pml
     - cc -DNP -DNOREDUCE -o pan pan.c
     - ./pan -l
 
