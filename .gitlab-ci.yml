@@ -48,13 +48,8 @@ test3:
     - job: test2
       artifacts: true
   script:
-    - rm -rf .git
-    - git clone https://github.com/nimble-code/Spin.git
     - cd Spin/Examples
-    - spin -a loops.pml
-    - cc -DNOREDUCE -o pan pan.c
     - ./pan -a
-    - spin -t -p loops.pml
   artifacts:
     paths:
       - Spin/Examples/loops.pml.trail
@@ -66,12 +61,7 @@ test4:
     - job: test3
       artifacts: true
   script:
-    - rm -rf .git
-    - git clone https://github.com/nimble-code/Spin.git
     - cd Spin/Examples
-    - spin -a loops.pml
-    - cc -DNOREDUCE -o pan pan.c
-    - ./pan -a
     - spin -t -p loops.pml
 
 test5:
