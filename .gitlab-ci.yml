@@ -61,6 +61,9 @@ test4:
     - job: test3
       artifacts: true
   script:
+    - git clone https://github.com/nimble-code/Spin.git tmp
+    - mv tmp/Examples/loops.pml Spin/Examples/loops.pml
+    - rm -rf tmp
     - cd Spin/Examples
     - spin -t -p loops.pml
 
