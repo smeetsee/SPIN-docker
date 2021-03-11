@@ -22,11 +22,13 @@ RUN apt-get -y update \
  && rm -rf /var/lib/apt/lists/*
 
  RUN git clone https://github.com/nimble-code/Spin.git \
- &&     rm -rf Spin/bin
- RUN cd Spin/Src \
+ &&     rm -rf Spin/bin \
+ &&     cd Spin/Src \
  &&     make \
  &&     mkdir -p /usr/local/share/man/man1 \
  &&     make install
+ &&     cd ../.. \
+ &&     rm -rf Spin
 
 VOLUME ["/data"]
 WORKDIR /data

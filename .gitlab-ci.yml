@@ -1,6 +1,8 @@
 stages:
   - build
   - test
+  - test_part_2
+  - test_part_3
 
 docker-build-master:
   image: docker:latest
@@ -25,7 +27,7 @@ test1:
     - spin hello.pml
     - spin -T hello.pml
 
-test234:
+test2:
   image: registry.gitlab.com/smeetsee/it/spin-docker
   stage: test
   script:
@@ -35,6 +37,40 @@ test234:
     - spin -a loops.pml
     - cc -DNOREDUCE -o pan pan.c
     - ./pan
+  artifacts:
+    paths:
+      - Spin/Examples/pan
+
+test3:
+  image: registry.gitlab.com/smeetsee/it/spin-docker
+  stage: test_part_2
+  needs:
+    - job: test2
+      artifacts: true
+  script:
+    - rm -rf .git
+    - git clone https://github.com/nimble-code/Spin.git
+    - cd Spin/Examples
+    - spin -a loops.pml
+    - cc -DNOREDUCE -o pan pan.c
+    - ./pan -a
+    - spin -t -p loops.pml
+  artifacts:
+    paths:
+      - Spin/Examples/loops.pml.trail
+
+test4:
+  image: registry.gitlab.com/smeetsee/it/spin-docker
+  stage: test_part_3
+  needs:
+    - job: test3
+      artifacts: true
+  script:
+    - rm -rf .git
+    - git clone https://github.com/nimble-code/Spin.git
+    - cd Spin/Examples
+    - spin -a loops.pml
+    - cc -DNOREDUCE -o pan pan.c
     - ./pan -a
     - spin -t -p loops.pml
 
