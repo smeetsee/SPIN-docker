@@ -26,7 +26,7 @@ RUN apt-get -y update \
  &&     cd Spin/Src \
  &&     make \
  &&     mkdir -p /usr/local/share/man/man1 \
- &&     make install
+ &&     make install \
  &&     cd ../.. \
  &&     rm -rf Spin
 
