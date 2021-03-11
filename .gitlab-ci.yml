@@ -97,6 +97,7 @@ test6a:
     - job: test6-prereq
       artifacts: true
   script:
+    - cd Spin/Examples
     - cc -DSAFETY -DNOREDUCE -DNOCLAIM -o pan pan.c
     - ./pan -c0 -n
 
@@ -107,6 +108,7 @@ test6b:
     - job: test6-prereq
       artifacts: true
   script:
+    - cd Spin/Examples
     - cc -DSAFETY -DNOCLAIM -o pan pan.c
     - ./pan -c0 -n
 
